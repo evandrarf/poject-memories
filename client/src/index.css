@@ -1,0 +1,7 @@
+body {
+  background-image: linear-gradient(to top right, #43cea2, #185a9d);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+}
