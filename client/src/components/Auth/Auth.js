@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Avatar, Button, Paper, Grid, Typography, Container } from "@material-ui/core";
 import { GoogleLogin } from "react-google-login";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -18,6 +18,7 @@ const Auth = () => {
   const [showPassword2, setShowPassword2] = useState(false);
   const [isSignup, setSignup] = useState(false);
   const [formData, setFormData] = useState(initialState);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -62,6 +63,9 @@ const Auth = () => {
     console.log(error);
     console.log("Google Sign In was unsuccessful. Try Again Later");
   };
+
+  useEffect(() => console.log("ok"));
+
   return (
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
