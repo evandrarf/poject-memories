@@ -16,7 +16,7 @@ export default makeStyles((theme) => ({
     justifyContent: "space-beetwen",
   },
   menu: {
-    fontSize: "3rem",
+    fontSize: "2rem",
     display: "flex",
   },
   userName: {

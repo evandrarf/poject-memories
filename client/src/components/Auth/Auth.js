@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Avatar, Button, Paper, Grid, Typography, Container } from "@material-ui/core";
 import { GoogleLogin } from "react-google-login";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -64,8 +64,6 @@ const Auth = () => {
     console.log("Google Sign In was unsuccessful. Try Again Later");
   };
 
-  useEffect(() => console.log("ok"));
-
   return (
     <Container component="main" maxWidth="xs">
       <Paper className={classes.paper} elevation={3}>
@@ -89,7 +87,7 @@ const Auth = () => {
             {isSignup ? "Sign Up" : "Sign In"}
           </Button>
           <GoogleLogin
-            clientId="712995925170-d7spo1pl763eikv8qlqe06ck68uktfoe.apps.googleusercontent.com"
+            clientId="712995925170-i3chgp3b1e2tk9kv0aobi8rqtqcko96p.apps.googleusercontent.com"
             render={(renderProps) => (
               <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
                 Google Sign In

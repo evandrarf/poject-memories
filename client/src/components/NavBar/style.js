@@ -22,8 +22,10 @@ export default makeStyles((theme) => ({
   },
   image: {
     marginLeft: "15px",
-    height: "60px",
-    width: "60px",
+    height: "40px",
+    width: "40px",
+    position: "relative",
+    top: "3px",
   },
   toolbar: {
     display: "flex",
@@ -54,10 +56,6 @@ export default makeStyles((theme) => ({
     heading: {
       fontSize: "1.8rem",
     },
-    image: {
-      height: "30px",
-      width: "30px",
-    },
     profile: {
       width: "200px",
       alignItems: "center",
@@ -76,6 +74,9 @@ export default makeStyles((theme) => ({
     },
     menu: {
       display: "block",
+    },
+    memoriesText: {
+      height: "30px",
     },
   },
 }));

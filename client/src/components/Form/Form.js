@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { TextField, Button, Typography, Paper } from "@material-ui/core";
 import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import useStyles from "./style";
-import { createPost, updatePost } from "../../actions/posts";
+import { createPost, updatePost, getPosts, getPostsBySearch } from "../../actions/posts";
 
 // Get the current id
 
-const Form = ({ currentId, setCurrentId, user, setUser }) => {
+const Form = ({ currentId, setCurrentId, user, setUser, page }) => {
   const [postData, setPostData] = useState({
     title: "",
     message: "",
@@ -17,9 +18,11 @@ const Form = ({ currentId, setCurrentId, user, setUser }) => {
   });
   const classes = useStyles();
   const dispatch = useDispatch();
-  const post = useSelector((state) => (currentId ? state.posts.find((p) => p._id == currentId) : null));
+  const navigate = useNavigate();
+  const post = useSelector((state) => (currentId ? state.posts.posts.find((p) => p._id == currentId) : null));
 
   useEffect(() => {
+    if (!post?.title) clear();
     if (post) setPostData(post);
   }, [post]);
 
@@ -35,8 +38,9 @@ const Form = ({ currentId, setCurrentId, user, setUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (currentId === null) {
-      dispatch(createPost({ ...postData, name: user?.result?.name }));
+    if (currentId === 0) {
+      dispatch(createPost({ ...postData, name: user?.result?.name }, navigate));
+
       clear();
     } else {
       dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
@@ -55,7 +59,7 @@ const Form = ({ currentId, setCurrentId, user, setUser }) => {
   }
 
   return (
-    <Paper className={classes.paper}>
+    <Paper className={classes.paper} elevation={6}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
         <Typography variant="h6">{currentId ? "Editing" : "Creating"} a Memory</Typography>
         <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />

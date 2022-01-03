@@ -6,7 +6,8 @@ import decode from "jwt-decode";
 
 import useStyles from "./style";
 
-import memories from "../../images/memories.png";
+import memoriesLogo from "../../images/memoriesLogo.png";
+import memoriesText from "../../images/memories.png";
 
 import ProfileMenu from "./Menu/ProfileMenu";
 
@@ -19,7 +20,7 @@ const NavBar = ({ user, setUser }) => {
   const logout = () => {
     dispatch({ type: "LOGOUT" });
 
-    navigate("/");
+    navigate("/posts");
     setUser(null);
   };
 
@@ -39,12 +40,10 @@ const NavBar = ({ user, setUser }) => {
   return (
     <div>
       <AppBar className={classes.appBar} position="static" color="inherit">
-        <div className={classes.brandContainer}>
-          <Typography component={Link} to="/" className={classes.heading} variant="h2" align="center">
-            Memories
-          </Typography>
-          <img className={classes.image} src={memories} alt="memories" />
-        </div>
+        <Link to="/posts" className={classes.brandContainer}>
+          <img src={memoriesText} alt="Icon" className={classes.memoriesText} height="45px" />
+          <img className={classes.image} src={memoriesLogo} alt="memories" />
+        </Link>
         <Toolbar className={classes.toolbar}>
           <ProfileMenu user={user} className={classes.menu} logout={logout} />
           {user?.result ? (

@@ -11,7 +11,11 @@ export default makeStyles((theme) => ({
   actionDiv: {
     textAlign: "center",
   },
-  progress: {
-    color: "white",
+  loadingContainer: {
+    display: "flex",
+    justifyContent: "center",
+    margin: "auto",
+    maxWidth: "100%",
+    alignItems: "center",
   },
 }));
